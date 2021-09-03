@@ -145,6 +145,8 @@ Client.on("messageCreate", async (message) => {
       const args = text.split(" ");
       const command = args.shift();
 
+        //JAIL COMMAND
+
       if (command == "jail") {
         if (message.member.permissions.has("ADMINISTRATOR")) {
           const member = message.mentions.members.first();
@@ -160,7 +162,7 @@ Client.on("messageCreate", async (message) => {
             content: "uh oh, you aren't oatreal enough for that!",
           });
         }
-      } else if (command == "unjail") {
+      } else if (command == "unjail") { //UNJAIL COMMAND
         if (message.member.permissions.has("ADMINISTRATOR")) {
           const member = message.mentions.members.first();
 
