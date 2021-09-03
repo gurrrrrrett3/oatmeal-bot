@@ -141,6 +141,9 @@ Client.on("messageCreate", async (message) => {
     }
 
     if (content.startsWith("-")) {
+        
+        //input parsing
+
       const text = content.slice(1);
       const args = text.split(" ");
       const command = args.shift();
