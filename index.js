@@ -134,52 +134,92 @@ Client.on("messageCreate", async (message) => {
   }
 
   if (message.author.id != Client.user.id) {
-    const content = message.content;
+    //input parsing
 
-    if (content.toLowerCase().includes("oatmeal")) {
+    const content = message.content;
+    const lContent = content.toLowerCase();
+    const text = content.slice(1);
+    const args = text.split(" ");
+    const command = args.shift().toLowerCase();
+
+    if (lContent.includes("oatmeal")) {
       message.reply("Oatmeal");
     }
 
+    if (lContent.includes("oatreal")) {
+      message.reply("You're Oatreal!");
+    }
+
+    if (lContent.includes("ping")) {
+      const sent = await message.reply({
+        content: "Pinging...",
+        fetchReply: true,
+      });
+
+      message.channel.send({
+        embeds: [
+          new Discord.MessageEmbed() //Create Embed
+            .setColor(message.member.displayHexColor)
+            .setTitle("Pong!")
+            .setDescription(
+              `**WS Ping:** \`${Client.ws.ping}ms\`\n**Reply ping:** \`${
+                sent.createdTimestamp - message.createdTimestamp
+              }ms\``
+            )
+            .setFooter(
+              `${Client.user.username}#${Client.user.discriminator} | Ver: ${version}`,
+              Client.user.avatarURL()
+            ),
+        ],
+      });
+    }
+
+    if (lContent.includes("damn")) {
+      message.reply("<:damn:882761329050550312>");
+    }
+
     if (content.startsWith("-")) {
-        
-        //input parsing
+      if (command == "stats") {
+        const servers = {
+          updated: "11:30PM 9-3-21",
+          poke: 65,
+          dd: 81,
+          film: 129,
+          table: 131,
+          tele: 162,
+          eng: 204,
+          lol: 219,
+          esp: 714,
+          cis: 802,
+        };
 
-      const text = content.slice(1);
-      const args = text.split(" ");
-      const command = args.shift();
+        const oat = message.guild.memberCount;
 
-        //JAIL COMMAND
+        const data = [
+            formatWar("Official Grand Valley Pokemon Club", oat, servers.poke),
+            formatWar("D&D Club GV", oat, servers.dd),
+            formatWar("The Network of Filmmakers", oat, servers.film),
+            formatWar("GVSU Tabletop Gaming", oat, servers.table),
+            formatWar("Grand Valley Television", oat, servers.tele),
+            formatWar("GVSU Engineering", oat, servers.eng),
+            formatWar("Laker Legends", oat, servers.lol),
+            formatWar("GVSU Esports", oat, servers.esp),
+            formatWar("GVSU CIS", oat, servers.cis),
+          ]
 
-      if (command == "jail") {
-        if (message.member.permissions.has("ADMINISTRATOR")) {
-          const member = message.mentions.members.first();
+          console.log(data)
 
-          const jailRole = message.guild.roles.cache.find(
-            (role) => role.name == "Jailed"
-          );
+        const embed = new Discord.MessageEmbed()
+          .setAuthor(
+            `WAR STATUS | Requested by ${message.member.displayName}`,
+            message.author.avatarURL()
+          )
+          .setTitle(`Oatmeal Members: ${oat}`)
+          .setFields(data)
+          .setTimestamp()
+          .setFooter(`Last updated: ${servers.updated}`)
 
-          member.roles.add(jailRole);
-          message.reply({ content: `Jailed ${member.displayName}!` });
-        } else {
-          message.reply({
-            content: "uh oh, you aren't oatreal enough for that!",
-          });
-        }
-      } else if (command == "unjail") { //UNJAIL COMMAND
-        if (message.member.permissions.has("ADMINISTRATOR")) {
-          const member = message.mentions.members.first();
-
-          const jailRole = message.guild.roles.cache.find(
-            (role) => role.name == "Jailed"
-          );
-
-          member.roles.remove(jailRole);
-          message.reply({ content: `unailed ${member.displayName}!` });
-        } else {
-          message.reply({
-            content: "uh oh, you aren't oatreal enough for that!",
-          });
-        }
+          message.reply({embeds: [embed]})
       }
     }
   }
@@ -201,3 +241,14 @@ Client.on("guildMemberAdd", async (member) => {
 
   member.roles.add(role);
 });
+
+function formatWar(name, oat, vs) {
+  var out = { name: "", value: "", inline: true };
+  if (oat > vs) {
+    out.value = `${name} has ${vs} members, ${oat - vs} fewer than us!`;
+  } else {
+    out.value = `${name} has ${vs} members, ${vs - oat} more than us!`;
+  }
+  out.name = name;
+  return out;
+}
