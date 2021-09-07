@@ -1,5 +1,634 @@
 {
-    "users": {
-        
+  "users": [
+    {
+      "id": "232510731067588608",
+      "stats": {
+        "messages": 15,
+        "oatmeal": 1
+      },
+      "leveling": {
+        "level": 2,
+        "xp": 85,
+        "totalXp": 450,
+        "lastXp": 1630736708766
+      }
+    },
+    {
+      "id": "199544077824294912",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630760092384
+      }
+    },
+    {
+      "id": "356268235697553409",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 17,
+        "totalXp": 17,
+        "lastXp": 1630760093556
+      }
+    },
+    {
+      "id": "159681853396090881",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630760578440
+      }
+    },
+    {
+      "id": "217604598565830657",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630760867320
+      }
+    },
+    {
+      "id": "767112176505847818",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630760931096
+      }
+    },
+    {
+      "id": "255518409247162369",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 17,
+        "totalXp": 17,
+        "lastXp": 1630760964980
+      }
+    },
+    {
+      "id": "306443910673334272",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 25,
+        "totalXp": 25,
+        "lastXp": 1630761779742
+      }
+    },
+    {
+      "id": "249742136042323973",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630761780531
+      }
+    },
+    {
+      "id": "126521669060657162",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630766451739
+      }
+    },
+    {
+      "id": "373547781324800021",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 16,
+        "totalXp": 16,
+        "lastXp": 1630773863365
+      }
+    },
+    {
+      "id": "311319287144906764",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 21,
+        "totalXp": 21,
+        "lastXp": 1630773863764
+      }
+    },
+    {
+      "id": "326234002430099458",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630777441078
+      }
+    },
+    {
+      "id": "461550127287369738",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630779561656
+      }
+    },
+    {
+      "id": "409145582708457473",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630779579768
+      }
+    },
+    {
+      "id": "411722550381641729",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630780382236
+      }
+    },
+    {
+      "id": "483817865217179660",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 21,
+        "totalXp": 21,
+        "lastXp": 1630780482450
+      }
+    },
+    {
+      "id": "820806752030556211",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630781010544
+      }
+    },
+    {
+      "id": "663990715772174356",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 18,
+        "totalXp": 18,
+        "lastXp": 1630781193669
+      }
+    },
+    {
+      "id": "810662403217948672",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630781823003
+      }
+    },
+    {
+      "id": "235088799074484224",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 17,
+        "totalXp": 17,
+        "lastXp": 1630782064688
+      }
+    },
+    {
+      "id": "85614143951892480",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630782067526
+      }
+    },
+    {
+      "id": "555080508376219648",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 21,
+        "totalXp": 21,
+        "lastXp": 1630782688351
+      }
+    },
+    {
+      "id": "275813801792634880",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630783835183
+      }
+    },
+    {
+      "id": "329186055716864002",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 25,
+        "totalXp": 25,
+        "lastXp": 1630786881842
+      }
+    },
+    {
+      "id": "700922370155741264",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630790972422
+      }
+    },
+    {
+      "id": "357658270632247296",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630795777528
+      }
+    },
+    {
+      "id": "515751546999406593",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 25,
+        "totalXp": 25,
+        "lastXp": 1630797136945
+      }
+    },
+    {
+      "id": "282859044593598464",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 18,
+        "totalXp": 18,
+        "lastXp": 1630797185311
+      }
+    },
+    {
+      "id": "458137507490562059",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630797412605
+      }
+    },
+    {
+      "id": "606150120957935636",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 21,
+        "totalXp": 21,
+        "lastXp": 1630797491667
+      }
+    },
+    {
+      "id": "489331525775785985",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630797626187
+      }
+    },
+    {
+      "id": "277189623107813377",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 17,
+        "totalXp": 17,
+        "lastXp": 1630797673465
+      }
+    },
+    {
+      "id": "214442184907292672",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630798256410
+      }
+    },
+    {
+      "id": "209682439079985152",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 24,
+        "totalXp": 24,
+        "lastXp": 1630799358401
+      }
+    },
+    {
+      "id": "544719603985547294",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630800152854
+      }
+    },
+    {
+      "id": "222169891170549764",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 16,
+        "totalXp": 16,
+        "lastXp": 1630801007809
+      }
+    },
+    {
+      "id": "453198659266412545",
+      "stats": {
+        "messages": 0,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630801176577
+      }
+    },
+    {
+      "id": "151226702599684096",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 21,
+        "totalXp": 21,
+        "lastXp": 1630804382327
+      },
+      "profile": {
+        "flair": "",
+        "color": "#ff7c00"
+      }
+    },
+    {
+      "id": "266332203993137170",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 25,
+        "totalXp": 25,
+        "lastXp": 1630805108515
+      },
+      "profile": {
+        "flair": "",
+        "color": "#ffdc39"
+      }
+    },
+    {
+      "id": "429169676350652416",
+      "stats": {
+        "messages": 2,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 36,
+        "totalXp": 36,
+        "lastXp": 1630810890545
+      },
+      "profile": {
+        "flair": "",
+        "color": "#3bc3e9"
+      }
+    },
+    {
+      "id": "444878163458129940",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 22,
+        "totalXp": 22,
+        "lastXp": 1630812940049
+      },
+      "profile": {
+        "flair": "",
+        "color": "#000000"
+      }
+    },
+    {
+      "id": "203690341952520197",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 20,
+        "totalXp": 20,
+        "lastXp": 1630872136195
+      },
+      "profile": {
+        "flair": "",
+        "color": "#000000"
+      }
+    },
+    {
+      "id": "344629862658605069",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 19,
+        "totalXp": 19,
+        "lastXp": 1630874545550
+      },
+      "profile": {
+        "flair": "",
+        "color": "#9b59b6"
+      }
+    },
+    {
+      "id": "460628413716234240",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 18,
+        "totalXp": 18,
+        "lastXp": 1630879489745
+      },
+      "profile": {
+        "flair": "",
+        "color": "#000000"
+      }
+    },
+    {
+      "id": "171989296042082305",
+      "stats": {
+        "messages": 1,
+        "oatmeal": 0
+      },
+      "leveling": {
+        "level": 0,
+        "xp": 16,
+        "totalXp": 16,
+        "lastXp": 1630970512835
+      },
+      "profile": {
+        "flair": "",
+        "color": "#9b59b6"
+      }
     }
+  ]
 }

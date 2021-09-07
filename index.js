@@ -15,7 +15,7 @@ import lodash from "lodash";
 
 const { version } = require("./package.json");
 const { TOKEN, ClientID, GuildID } = require("./auth.json");
-import { level } from "./leveling.js";
+import { leveling } from "./leveling.js";
 
 //Database
 import { LowSync, JSONFileSync } from "lowdb";
@@ -25,7 +25,7 @@ db.read();
 var data = db.data;
 db.chain = lodash.chain(db.data);
 
-console.log("Loaded database with a size of " + `${data}`.length + " Bytes");
+console.log("Loaded database with a size of " + data.users.length + " users");
 
 //Client
 
@@ -115,13 +115,13 @@ Client.on("interactionCreate", async (interaction) => {
 Client.on("messageCreate", async (message) => {
   //DATABASE TIME
   const users = db.chain.get("users");
-  const userData = users.find({ id: message.author.id }).value();
+  var userData = users.find({ id: message.author.id }).value();
 
   if (!userData) {
-    const defaultUserData = {
+    var defaultUserData = {
       id: message.author.id,
       stats: {
-        messages: 0,
+        messages: 1,
         oatmeal: 0,
       },
       leveling: {
@@ -130,8 +130,27 @@ Client.on("messageCreate", async (message) => {
         totalXp: 0,
         lastXp: Date.now(),
       },
+      profile: {
+          flair: "",
+          color: message.member.displayHexColor
+      }
     };
+
+    //give the user a first xp boost
+
+    const givenXp = leveling.giveXP();
+
+    defaultUserData.leveling.xp += givenXp
+    defaultUserData.leveling.totalXp = leveling.totalXp(0, givenXp)
+
+    db.data.users.push(defaultUserData)
+    userData = defaultUserData
+    db.write()
   }
+
+  
+
+  //ignore own messages
 
   if (message.author.id != Client.user.id) {
     //input parsing
@@ -142,8 +161,38 @@ Client.on("messageCreate", async (message) => {
     const args = text.split(" ");
     const command = args.shift().toLowerCase();
 
+    //add messages stat
+    userData.stats.messages ++
+
+    //process xp
+    if (Date.now() - userData.leveling.lastXp > 60000) {
+      //user is elgible to get xp, lets give them some
+
+      const xpToGive = leveling.giveXP()
+
+      userData.leveling.xp += xpToGive
+
+      if (userData.leveling.xp > leveling.xpNeeded(userData.leveling.level + 1)) {
+        
+        //process a level up
+        userData.leveling.level ++
+        userData.leveling.xp = userData.leveling.xp - leveling.xpNeeded(userData.leveling.level + 1)
+      }
+
+      //calculate total xp
+      userData.leveling.totalXp = leveling.totalXp(userData.leveling.level, userData.leveling.xp)
+
+      //and write
+        data.users[data.users.findIndex((user) => user.id == message.author.id)] = userData
+
+        db.write()
+    }
+
     if (lContent.includes("oatmeal")) {
       message.reply("Oatmeal");
+
+      //add oatmeal stat
+      userData.stats.oatmeal ++
     }
 
     if (lContent.includes("oatreal")) {
@@ -181,33 +230,31 @@ Client.on("messageCreate", async (message) => {
     if (content.startsWith("-")) {
       if (command == "stats") {
         const servers = {
-          updated: "11:30PM 9-3-21",
+          updated: "6:07PM 9-6-21",
           poke: 65,
-          dd: 81,
-          film: 129,
-          table: 131,
-          tele: 162,
-          eng: 204,
-          lol: 219,
-          esp: 714,
-          cis: 802,
+          dd: 85,
+          film: 130,
+          table: 132,
+          tele: 163,
+          eng: 207,
+          lol: 226,
+          esp: 721,
+          cis: 809,
         };
 
         const oat = message.guild.memberCount;
 
         const data = [
-            formatWar("Official Grand Valley Pokemon Club", oat, servers.poke),
-            formatWar("D&D Club GV", oat, servers.dd),
-            formatWar("The Network of Filmmakers", oat, servers.film),
-            formatWar("GVSU Tabletop Gaming", oat, servers.table),
-            formatWar("Grand Valley Television", oat, servers.tele),
-            formatWar("GVSU Engineering", oat, servers.eng),
-            formatWar("Laker Legends", oat, servers.lol),
-            formatWar("GVSU Esports", oat, servers.esp),
-            formatWar("GVSU CIS", oat, servers.cis),
-          ]
-
-          console.log(data)
+          formatWar("Official Grand Valley Pokemon Club", oat, servers.poke),
+          formatWar("D&D Club GV", oat, servers.dd),
+          formatWar("The Network of Filmmakers", oat, servers.film),
+          formatWar("GVSU Tabletop Gaming", oat, servers.table),
+          formatWar("Grand Valley Television", oat, servers.tele),
+          formatWar("GVSU Engineering", oat, servers.eng),
+          formatWar("Laker Legends", oat, servers.lol),
+          formatWar("GVSU Esports", oat, servers.esp),
+          formatWar("GVSU CIS", oat, servers.cis),
+        ];
 
         const embed = new Discord.MessageEmbed()
           .setAuthor(
@@ -217,10 +264,43 @@ Client.on("messageCreate", async (message) => {
           .setTitle(`Oatmeal Members: ${oat}`)
           .setFields(data)
           .setTimestamp()
-          .setFooter(`Last updated: ${servers.updated}`)
+          .setFooter(`Last updated: ${servers.updated}`);
 
-          message.reply({embeds: [embed]})
+        message.reply({ embeds: [embed] });
+      } 
+
+      if (command == "jail") {
+        if (message.member.permissions.has("ADMINISTRATOR")) {
+          const member = message.mentions.members.first();
+
+          const jailRole = message.guild.roles.cache.find(
+            (role) => role.name == "Jailed"
+          );
+
+          member.roles.add(jailRole);
+          message.reply({ content: `Jailed ${member.displayName}!` });
+        } else {
+          message.reply({
+            content: "uh oh, you aren't oatreal enough for that!",
+          });
+        }
+      } else if (command == "unjail") {
+        if (message.member.permissions.has("ADMINISTRATOR")) {
+          const member = message.mentions.members.first();
+
+          const jailRole = message.guild.roles.cache.find(
+            (role) => role.name == "Jailed"
+          );
+
+          member.roles.remove(jailRole);
+          message.reply({ content: `unailed ${member.displayName}!` });
+        } else {
+          message.reply({
+            content: "uh oh, you aren't oatreal enough for that!",
+          });
+        }
       }
+    
     }
   }
 });
