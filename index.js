@@ -150,9 +150,38 @@ Client.on("messageCreate", async (message) => {
 
   
 
-  //ignore own messages
+  
 
-  if (message.author.id != Client.user.id) {
+  //add messages stat
+  userData.stats.messages ++
+
+      //process xp
+      if (Date.now() - userData.leveling.lastXp > 60000) {
+        //user is elgible to get xp, lets give them some
+  
+        const xpToGive = leveling.giveXP()
+  
+        userData.leveling.xp += xpToGive
+  
+        if (userData.leveling.xp > leveling.xpNeeded(userData.leveling.level + 1)) {
+          
+          //process a level up
+          userData.leveling.level ++
+          userData.leveling.xp = userData.leveling.xp - leveling.xpNeeded(userData.leveling.level)
+        }
+  
+        //calculate total xp
+        userData.leveling.totalXp = leveling.totalXp(userData.leveling.level, userData.leveling.xp)
+  
+        //and write
+          data.users[data.users.findIndex((user) => user.id == message.author.id)] = userData
+  
+          db.write()
+      }
+  
+
+//ignore own messages
+  if (message.author.id != Client.user.id && message.member != null) {
     //input parsing
 
     const content = message.content;
@@ -161,32 +190,6 @@ Client.on("messageCreate", async (message) => {
     const args = text.split(" ");
     const command = args.shift().toLowerCase();
 
-    //add messages stat
-    userData.stats.messages ++
-
-    //process xp
-    if (Date.now() - userData.leveling.lastXp > 60000) {
-      //user is elgible to get xp, lets give them some
-
-      const xpToGive = leveling.giveXP()
-
-      userData.leveling.xp += xpToGive
-
-      if (userData.leveling.xp > leveling.xpNeeded(userData.leveling.level + 1)) {
-        
-        //process a level up
-        userData.leveling.level ++
-        userData.leveling.xp = userData.leveling.xp - leveling.xpNeeded(userData.leveling.level + 1)
-      }
-
-      //calculate total xp
-      userData.leveling.totalXp = leveling.totalXp(userData.leveling.level, userData.leveling.xp)
-
-      //and write
-        data.users[data.users.findIndex((user) => user.id == message.author.id)] = userData
-
-        db.write()
-    }
 
     if (lContent.includes("oatmeal")) {
       message.reply("Oatmeal");
@@ -299,6 +302,25 @@ Client.on("messageCreate", async (message) => {
             content: "uh oh, you aren't oatreal enough for that!",
           });
         }
+      }
+
+      if (command == "profile") {
+        var mUser = message.member
+        if (message.mentions.members.first()) {
+          mUser = message.mentions.members.first()
+        } 
+        const uD = data.users[data.users.findIndex((user) => user.id == mUser.id)]
+
+        const embed = new Discord.MessageEmbed()
+        .setAuthor(`${mUser.displayName}'s profile`, mUser.user.avatarURL())
+        .setTimestamp()
+        .addField("Messages", `${uD.stats.messages}`, true)
+        .addField("Oatmeal", `${uD.stats.oatmeal}`, true)
+        .addField("XP", `${uD.leveling.xp}`, true)
+        .addField("Level", `${uD.leveling.level}`, true)
+        .addField("XP needed", `${leveling.xpNeeded(uD.leveling.level + 1) - uD.leveling.xp}`, true)
+
+        message.reply({embeds: [embed]})
       }
     
     }
